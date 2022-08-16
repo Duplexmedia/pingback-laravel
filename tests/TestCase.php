@@ -1,36 +1,29 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Duplexmedia\Pingback\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Duplexmedia\Pingback\GuzzleServiceProvider;
+use Duplexmedia\Pingback\PingbackServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
-    protected function setUp(): void
+    /**
+     * {@inheritdoc}
+     */
+    public function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            PingbackServiceProvider::class,
+            GuzzleServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        $migration->up();
-        */
     }
 }
