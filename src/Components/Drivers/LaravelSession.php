@@ -6,6 +6,6 @@ class LaravelSession
 {
     public function get()
     {
-        return config('session.default');
+        return config('session.driver');
     }
 }
