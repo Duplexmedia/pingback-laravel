@@ -8,10 +8,11 @@ You can install the package via composer:
 composer require duplexmedia/pingback
 ```
 
-You can publish the config file with:
+Set the following environment variables with correct values
 
-```bash
-php artisan vendor:publish --tag="pingback-config"
+```text
+- PINGBACK_DIAGNOSTIC_SERVER_URL=https://xxx.tld
+- PINGBACK_API_KEY=XXX
 ```
 
 ## Testing
