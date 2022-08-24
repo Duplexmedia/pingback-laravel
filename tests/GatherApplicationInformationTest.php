@@ -90,10 +90,15 @@ class GatherApplicationInformationTest extends TestCase
             $mock->shouldReceive('get')->andReturn('xSession');
         });
 
+        config()->set('pingback.api.uuid', 'xxx');
+
         $applicationInformation = new GatherApplicationInformation();
 
         $this->assertSame([
             'Environment' => [
+                [
+                    'UUID' => 'xxx',
+                ],
                 [
                     'Laravel Version' => 'xLaravelVersion',
                 ],

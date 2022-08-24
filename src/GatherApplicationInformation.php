@@ -52,6 +52,7 @@ class GatherApplicationInformation
     private function gatherInformation(): void
     {
         $this->addSection('Environment', [
+            'UUID' => config('pingback.api.uuid'),
             'Laravel Version' => app(LaravelVersion::class)->get(),
             'PHP Version' => app(PhpVersion::class)->get(),
             'Composer Version' => app(ComposerVersion::class)->get(),

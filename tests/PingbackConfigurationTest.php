@@ -36,4 +36,16 @@ class PingbackConfigurationTest extends TestCase
     {
         $this->assertNull(config('pingback.api.key'));
     }
+
+    public function test_uuid_is_set()
+    {
+        config()->set('pingback.api.uuid', 'XXXXX');
+
+        $this->assertSame('XXXXX', config('pingback.api.uuid'));
+    }
+
+    public function test_uuid_is_null_on_default()
+    {
+        $this->assertNull(config('pingback.api.uuid'));
+    }
 }

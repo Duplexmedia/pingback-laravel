@@ -8,11 +8,17 @@ You can install the package via composer:
 composer require duplexmedia/pingback
 ```
 
-Set the following environment variables with correct values
+Set the following environment variables with correct values.<br>
+To get the UUID, run the following command
+
+```bash
+php artisan pingback:uuid
+```
 
 ```text
 - PINGBACK_DIAGNOSTIC_SERVER_URL=https://xxx.tld
 - PINGBACK_API_KEY=XXX
+- PINGBACK_UUID=
 ```
 
 ## Testing

@@ -2,7 +2,8 @@
 
 namespace Duplexmedia\Pingback;
 
-use Duplexmedia\Pingback\Commands\PingbackCommand;
+use Duplexmedia\Pingback\Commands\PingbackSendCommand;
+use Duplexmedia\Pingback\Commands\PingbackUuidCommand;
 use Duplexmedia\Pingback\Helpers\Url;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\ServiceProvider;
@@ -19,7 +20,8 @@ class PingbackServiceProvider extends ServiceProvider
             });
 
             $this->commands([
-                PingbackCommand::class,
+                PingbackSendCommand::class,
+                PingbackUuidCommand::class,
             ]);
         }
     }

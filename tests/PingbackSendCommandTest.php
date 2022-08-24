@@ -8,9 +8,9 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Mockery;
 
-class PingbackCommandTest extends TestCase
+class PingbackSendCommandTest extends TestCase
 {
-    public function test_run_pingback_command()
+    public function test_run_pingback_send_command()
     {
         $mock = new MockHandler([new Response(200, [], null)]);
         $handler = HandlerStack::create($mock);

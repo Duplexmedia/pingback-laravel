@@ -5,7 +5,7 @@ namespace Duplexmedia\Pingback\Commands;
 use Duplexmedia\Pingback\Pingback;
 use Illuminate\Console\Command;
 
-class PingbackCommand extends Command
+class PingbackSendCommand extends Command
 {
     public $signature = 'pingback:send';
 
