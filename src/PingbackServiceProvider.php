@@ -15,8 +15,10 @@ class PingbackServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->app->instance(Url::class, new Url());
             $this->app->booted(function () {
-                $schedule = $this->app->make(Schedule::class);
-                $schedule->command('pingback:send')->daily();
+                if ($this->app->environment('production')) {
+                    $schedule = $this->app->make(Schedule::class);
+                    $schedule->command('pingback:send')->daily();
+                }
             });
 
             $this->commands([
