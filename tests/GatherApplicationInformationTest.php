@@ -96,73 +96,31 @@ class GatherApplicationInformationTest extends TestCase
 
         $this->assertSame([
             'Environment' => [
-                [
-                    'UUID' => 'xxx',
-                ],
-                [
-                    'Laravel Version' => 'xLaravelVersion',
-                ],
-                [
-                    'PHP Version' => 'xPHPVersion',
-                ],
-                [
-                    'Composer Version' => 'xComposerVersion',
-                ],
-                [
-                    'Environment' => 'xEnvironment',
-                ],
-                [
-                    'Debug Mode' => true,
-                ],
-                [
-                    'Application Name' => 'xApplicationName',
-                ],
-                [
-                    'URL' => 'xURL',
-                ],
-                [
-                    'Maintenance Mode' => true,
-                ],
+                'UUID' => 'xxx',
+                'Laravel Version' => 'xLaravelVersion',
+                'PHP Version' => 'xPHPVersion',
+                'Composer Version' => 'xComposerVersion',
+                'Environment' => 'xEnvironment',
+                'Debug Mode' => true,
+                'Application Name' => 'xApplicationName',
+                'URL' => 'xURL',
+                'Maintenance Mode' => true,
             ],
             'Cache' => [
-                [
-                    'Config' => true,
-                ],
-                [
-                    'Routes' => true,
-                ],
-                [
-                    'Events' => true,
-                ],
-                [
-                    'Views' => true,
-                ],
+                'Config' => true,
+                'Routes' => true,
+                'Events' => true,
+                'Views' => true,
             ],
             'Drivers' => [
-                [
-                    'Broadcasting' => 'xBroadcasting',
-                ],
-                [
-                    'Cache' => 'xCache',
-                ],
-                [
-                    'Database' => 'xDatabase',
-                ],
-                [
-                    'Mail' => 'xMail',
-                ],
-                [
-                    'Octane' => 'xOctane',
-                ],
-                [
-                    'Queue' => 'xQueue',
-                ],
-                [
-                    'Scout' => 'xScout',
-                ],
-                [
-                    'Session' => 'xSession',
-                ],
+                'Broadcasting' => 'xBroadcasting',
+                'Cache' => 'xCache',
+                'Database' => 'xDatabase',
+                'Mail' => 'xMail',
+                'Octane' => 'xOctane',
+                'Queue' => 'xQueue',
+                'Scout' => 'xScout',
+                'Session' => 'xSession',
             ],
         ], $applicationInformation->get());
     }

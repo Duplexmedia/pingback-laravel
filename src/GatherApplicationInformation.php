@@ -45,7 +45,7 @@ class GatherApplicationInformation
     private function addSection(string $section, array $data)
     {
         foreach ($data as $key => $value) {
-            $this->data[$section][] = [$key => $value];
+            $this->data[$section][$key] = $value;
         }
     }
 
