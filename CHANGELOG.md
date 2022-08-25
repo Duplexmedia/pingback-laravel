@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.1.1
+
+- Fix wrong formatted result array
+
 # 2.1.0
 
 - Set schedule only in production environment
