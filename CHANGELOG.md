@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.1.0
+
+- Set schedule only in production environment
+
 # 2.0.0
 
 - Add UUID to json
