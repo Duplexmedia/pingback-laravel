@@ -18,6 +18,8 @@ class PingbackSendCommand extends Command
         $pingback = (new Pingback());
         $pingback->sendInformation();
 
+        $this->comment('System information sent');
+
         return 0;
     }
 }
