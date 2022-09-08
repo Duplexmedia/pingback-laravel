@@ -1,5 +1,10 @@
 # Changelog
 
+# 2.2.0
+
+- Add ayda version output
+- Show info that command is finished
+
 # 2.1.3
 
 - Fix guzzle 6 compatibility
