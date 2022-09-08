@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.1.3
+
+- Fix guzzle 6 compatibility
+
 # 2.1.2
 
 - Add guzzle 6 compatibility
