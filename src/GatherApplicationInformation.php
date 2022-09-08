@@ -16,6 +16,7 @@ use Duplexmedia\Pingback\Components\Drivers\LaravelScout;
 use Duplexmedia\Pingback\Components\Drivers\LaravelSession;
 use Duplexmedia\Pingback\Components\Environment\ComposerVersion;
 use Duplexmedia\Pingback\Components\Environment\LaravelApplicationName;
+use Duplexmedia\Pingback\Components\Environment\LaravelAydaVersion;
 use Duplexmedia\Pingback\Components\Environment\LaravelDebugMode;
 use Duplexmedia\Pingback\Components\Environment\LaravelEnvironment;
 use Duplexmedia\Pingback\Components\Environment\LaravelMaintenanceMode;
@@ -53,6 +54,7 @@ class GatherApplicationInformation
     {
         $this->addSection('Environment', [
             'UUID' => config('pingback.api.uuid'),
+            'ayda Version' => app(LaravelAydaVersion::class)->get(),
             'Laravel Version' => app(LaravelVersion::class)->get(),
             'PHP Version' => app(PhpVersion::class)->get(),
             'Composer Version' => app(ComposerVersion::class)->get(),

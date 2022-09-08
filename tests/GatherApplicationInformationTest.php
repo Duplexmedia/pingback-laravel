@@ -16,6 +16,7 @@ use Duplexmedia\Pingback\Components\Drivers\LaravelScout;
 use Duplexmedia\Pingback\Components\Drivers\LaravelSession;
 use Duplexmedia\Pingback\Components\Environment\ComposerVersion;
 use Duplexmedia\Pingback\Components\Environment\LaravelApplicationName;
+use Duplexmedia\Pingback\Components\Environment\LaravelAydaVersion;
 use Duplexmedia\Pingback\Components\Environment\LaravelDebugMode;
 use Duplexmedia\Pingback\Components\Environment\LaravelEnvironment;
 use Duplexmedia\Pingback\Components\Environment\LaravelMaintenanceMode;
@@ -29,6 +30,9 @@ class GatherApplicationInformationTest extends TestCase
 {
     public function test_can_get_formatted_information()
     {
+        $this->mock(LaravelAydaVersion::class, function (Mockery\MockInterface $mock) {
+            $mock->shouldReceive('get')->andReturn('xLaravelAydaVersion');
+        });
         $this->mock(LaravelVersion::class, function (Mockery\MockInterface $mock) {
             $mock->shouldReceive('get')->andReturn('xLaravelVersion');
         });
@@ -97,6 +101,7 @@ class GatherApplicationInformationTest extends TestCase
         $this->assertSame([
             'Environment' => [
                 'UUID' => 'xxx',
+                'ayda Version' => 'xLaravelAydaVersion',
                 'Laravel Version' => 'xLaravelVersion',
                 'PHP Version' => 'xPHPVersion',
                 'Composer Version' => 'xComposerVersion',
