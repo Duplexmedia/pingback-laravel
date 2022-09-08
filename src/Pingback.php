@@ -3,13 +3,13 @@
 namespace Duplexmedia\Pingback;
 
 use Duplexmedia\Pingback\Helpers\Url;
-use Psr\Http\Client\ClientInterface;
+use GuzzleHttp\Client;
 
 class Pingback
 {
     protected array $data = [];
 
-    private ClientInterface $client;
+    private Client $client;
 
     public function __construct()
     {
