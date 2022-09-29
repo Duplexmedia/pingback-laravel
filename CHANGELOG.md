@@ -1,8 +1,9 @@
 # Changelog
 
-# 2.2.1
+# 2.3.0
 
 - Run cronjob on every environment except local
+- Throw error if uuid is not set
 
 # 2.2.0
 
