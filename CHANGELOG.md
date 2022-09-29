@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.2.1
+
+- Run cronjob on every environment except local
+
 # 2.2.0
 
 - Add ayda version output
