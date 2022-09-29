@@ -12,6 +12,7 @@ class PingbackSendCommandTest extends TestCase
 {
     public function test_run_pingback_send_command()
     {
+        config()->set('pingback.api.uuid', 'xxx');
         $mock = new MockHandler([new Response(200, [], null)]);
         $handler = HandlerStack::create($mock);
         $guzzleClient = new Client(['handler' => $handler]);
