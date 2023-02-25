@@ -1,5 +1,9 @@
 # Changelog
 
+# 2.4.0
+
+- Add Laravel 10 support
+
 # 2.3.0
 
 - Run cronjob on every environment except local
