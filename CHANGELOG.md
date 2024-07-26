@@ -1,5 +1,10 @@
 # Changelog
 
+# 3.0.0
+
+- Add Laravel 11 support with php 8.3
+- Drop all other Laravel and php versions
+
 # 2.4.0
 
 - Add Laravel 10 support
