@@ -11,6 +11,6 @@ class ComposerVersionTest extends TestCase
     {
         $version = (new ComposerVersion())->get();
 
-        $this->assertSame('2.3.10', $version);
+        $this->assertSame('2.7.7', $version);
     }
 }

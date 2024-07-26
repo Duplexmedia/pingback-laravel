@@ -1,5 +1,12 @@
 # Laravel system information
 
+## Versions
+
+| Version | PHP Version       | Laravel Version             |
+|---------|-------------------|-----------------------------|
+| 2.4     | ~7.4 \| ~8.1      | ^6 \| ^7 \| ^8 \| ^9 \| ^10 |
+| 3.0     | 8.3               | 11                          |
+
 ## Installation
 
 You can install the package via composer:
