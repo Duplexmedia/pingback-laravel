@@ -75,6 +75,17 @@ pipeline {
             sh "docker exec --tty ${customContainerNamePHP8} composer test -- --configuration phpunit10.xml.dist"
         }
     }
+    stage('Testing Laravel 11') {
+        steps {
+            sh "docker exec --tty ${customContainerNamePHP8} composer remove orchestra/testbench --dev"
+            sh "docker exec --tty ${customContainerNamePHP8} composer remove phpunit/phpunit --dev"
+            sh "docker exec --tty ${customContainerNamePHP8} composer remove laravel/framework"
+            sh "docker exec --tty ${customContainerNamePHP8} composer require laravel/framework ^11"
+            sh "docker exec --tty ${customContainerNamePHP8} composer require mockery/mockery ^1.5 --dev"
+            sh "docker exec --tty ${customContainerNamePHP8} composer require orchestra/testbench ^8 --dev"
+            sh "docker exec --tty ${customContainerNamePHP8} composer test -- --configuration phpunit10.xml.dist"
+        }
+    }
   }
   post {
       always {
