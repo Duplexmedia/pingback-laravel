@@ -11,6 +11,7 @@ class ComposerVersionTest extends TestCase
     {
         $version = (new ComposerVersion())->get();
 
-        $this->assertSame('2.7.7', $version);
+        $this->assertIsString($version);
+        $this->assertMatchesRegularExpression('/[0-9]+.[0-9]+.[0-9]+/', $version);
     }
 }

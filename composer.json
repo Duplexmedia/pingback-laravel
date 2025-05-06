@@ -20,10 +20,10 @@
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7",
-        "laravel/framework": "^11"
+        "laravel/framework": "<11||^12"
     },
     "require-dev": {
-        "orchestra/testbench": "^9",
+        "orchestra/testbench": "<9||^10",
         "phpunit/phpunit": "^10",
         "mockery/mockery": "^1.6"
     },

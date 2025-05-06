@@ -21,9 +21,9 @@ class LaravelViewsTest extends TestCase
 
     public function test_can_get_enabled_laravel_config_cache()
     {
-        Storage::fake()->put('/views/view.php', '');
         App::shouldReceive('storagePath')
-            ->andReturn('/var/www/vendor/orchestra/testbench-core/laravel/storage/framework/testing/disks/local/views');
+            ->andReturn('vendor/orchestra/testbench-core/laravel/storage/framework/testing/disks/local/framework/views');
+
         $cache = (new LaravelViews())->get();
 
         $this->assertTrue($cache);
