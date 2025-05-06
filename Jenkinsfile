@@ -16,6 +16,7 @@ pipeline {
           sh "sed -i 's/pingback_php8/${customContainerNamePHP8}/g' docker-compose.yml"
           sh "docker-compose up -d"
           sh "docker exec --tty ${customContainerNamePHP7} composer install"
+          sh "docker exec --tty ${customContainerNamePHP8} composer install"
           sh 'sudo chown -R jenkins *'
         }
     }
