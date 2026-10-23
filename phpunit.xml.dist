@@ -3,28 +3,25 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
     backupGlobals="false"
-    backupStaticAttributes="false"
+    backupStaticProperties="false"
     bootstrap="vendor/autoload.php"
+    cacheDirectory=".phpunit.cache"
     colors="true"
-    convertErrorsToExceptions="true"
-    convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true"
     processIsolation="false"
     stopOnFailure="false"
     executionOrder="random"
     failOnWarning="true"
     failOnRisky="true"
     beStrictAboutOutputDuringTests="true"
-    verbose="true"
 >
     <testsuites>
         <testsuite name="Duplexmedia Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">src/</directory>
-        </whitelist>
-    </filter>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
 </phpunit>

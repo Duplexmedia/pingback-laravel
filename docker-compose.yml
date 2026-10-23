@@ -7,3 +7,12 @@ services:
     volumes:
       - ./:/var/www
     container_name: "pingback_php8"
+  php_latest:
+    build:
+      context: docker/php8
+      args:
+        PHP_VERSION: "8.5"
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    container_name: "pingback_php_latest"

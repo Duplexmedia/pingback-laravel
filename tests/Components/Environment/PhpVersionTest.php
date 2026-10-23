@@ -7,13 +7,10 @@ use Duplexmedia\Pingback\Tests\TestCase;
 
 class PhpVersionTest extends TestCase
 {
-    /**
-     * @requires PHP >= 8.3
-     */
-    public function test_can_get_php_8_3_version()
+    public function test_can_get_php_version()
     {
         $phpVersion = (new PhpVersion())->get();
 
-        $this->assertStringStartsWith('8.3', $phpVersion);
+        $this->assertSame(PHP_VERSION, $phpVersion);
     }
 }
