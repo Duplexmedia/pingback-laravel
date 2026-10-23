@@ -1,5 +1,5 @@
-def customContainerNamePHP7 = UUID.randomUUID().toString().replace("-", "");
 def customContainerNamePHP8 = UUID.randomUUID().toString().replace("-", "");
+def customContainerNamePHPLatest = UUID.randomUUID().toString().replace("-", "");
 pipeline {
   agent any
   options {
@@ -12,78 +12,23 @@ pipeline {
           sh 'sudo rm -rf *'
           // Clean before build
           checkout scm
-          sh "sed -i 's/pingback_php7/${customContainerNamePHP7}/g' docker-compose.yml"
           sh "sed -i 's/pingback_php8/${customContainerNamePHP8}/g' docker-compose.yml"
+          sh "sed -i 's/pingback_php_latest/${customContainerNamePHPLatest}/g' docker-compose.yml"
           sh "docker-compose up -d"
-          sh "docker exec --tty ${customContainerNamePHP7} composer install"
+          sh "docker exec --tty ${customContainerNamePHP8} composer install"
+          sh "docker exec --tty ${customContainerNamePHPLatest} composer install"
           sh 'sudo chown -R jenkins *'
-        }
-    }
-    stage('Testing Laravel 6') {
-        steps {
-            sh "docker exec --tty ${customContainerNamePHP7} composer install"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require laravel/framework ^6"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require orchestra/testbench ^4 --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer test"
-        }
-    }
-    stage('Testing Laravel 7') {
-        steps {
-            sh "docker exec --tty ${customContainerNamePHP7} composer install"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove phpunit/phpunit --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require laravel/framework ^7"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require phpunit/phpunit ^8.4 --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require orchestra/testbench ^5 --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer test"
-        }
-    }
-    stage('Testing Laravel 8') {
-        steps {
-            sh "docker exec --tty ${customContainerNamePHP7} composer install"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP7} composer remove phpunit/phpunit --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require laravel/framework ^8"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require phpunit/phpunit ^8.4 --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer require orchestra/testbench ^6 --dev"
-            sh "docker exec --tty ${customContainerNamePHP7} composer test"
-        }
-    }
-    stage('Testing Laravel 9') {
-        steps {
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove phpunit/phpunit --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require laravel/framework ^9"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require mockery/mockery ^1.5 --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require orchestra/testbench ^7 --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer test"
-        }
-    }
-    stage('Testing Laravel 10') {
-        steps {
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove phpunit/phpunit --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require laravel/framework ^10"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require mockery/mockery ^1.5 --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require orchestra/testbench ^8 --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer test -- --configuration phpunit10.xml.dist"
         }
     }
     stage('Testing Laravel 11') {
         steps {
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove orchestra/testbench --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove phpunit/phpunit --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer remove laravel/framework"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require laravel/framework ^11"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require mockery/mockery ^1.5 --dev"
-            sh "docker exec --tty ${customContainerNamePHP8} composer require orchestra/testbench ^8 --dev"
+            sh "docker exec --tty ${customContainerNamePHP8} composer install"
             sh "docker exec --tty ${customContainerNamePHP8} composer test -- --configuration phpunit10.xml.dist"
+        }
+    }
+    stage('Testing PHP 8.5') {
+        steps {
+            sh "docker exec --tty ${customContainerNamePHPLatest} composer test -- --configuration phpunit10.xml.dist"
         }
     }
   }

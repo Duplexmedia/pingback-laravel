@@ -16,14 +16,14 @@
         }
     ],
     "require": {
-        "php": "~8.3",
+        "php": "^8.3",
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7",
-        "laravel/framework": "<11||^12"
+        "laravel/framework": "^11"
     },
     "require-dev": {
-        "orchestra/testbench": "<9||^10",
+        "orchestra/testbench": "^9",
         "phpunit/phpunit": "^10",
         "mockery/mockery": "^1.6"
     },

@@ -1,5 +1,11 @@
 # Changelog
 
+# 3.1.1
+
+- Fix Laravel 11 version constraint (v3.1.0 accidentally excluded Laravel 11)
+- Fix environment dependent LaravelViews test
+- Support PHP 8.3–8.5 (PHP requirement changed from ~8.3 to ^8.3)
+
 # 3.0.0
 
 - Add Laravel 11 support with php 8.3

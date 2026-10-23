@@ -21,10 +21,21 @@ class LaravelViewsTest extends TestCase
 
     public function test_can_get_enabled_laravel_config_cache()
     {
-        App::shouldReceive('storagePath')
-            ->andReturn('vendor/orchestra/testbench-core/laravel/storage/framework/testing/disks/local/framework/views');
+        $storagePath = sys_get_temp_dir().'/pingback-views-'.uniqid();
+        mkdir($storagePath.'/framework/views', 0777, true);
+        file_put_contents($storagePath.'/framework/views/compiled.php', '<?php');
 
-        $cache = (new LaravelViews())->get();
+        App::shouldReceive('storagePath')
+            ->andReturn($storagePath.'/framework/views');
+
+        try {
+            $cache = (new LaravelViews())->get();
+        } finally {
+            unlink($storagePath.'/framework/views/compiled.php');
+            rmdir($storagePath.'/framework/views');
+            rmdir($storagePath.'/framework');
+            rmdir($storagePath);
+        }
 
         $this->assertTrue($cache);
     }
