@@ -20,11 +20,11 @@
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7",
-        "laravel/framework": "^12"
+        "laravel/framework": "^13"
     },
     "require-dev": {
-        "orchestra/testbench": "^10",
-        "phpunit/phpunit": "^11.5.3",
+        "orchestra/testbench": "^11",
+        "phpunit/phpunit": "^12.5.8",
         "mockery/mockery": "^1.6"
     },
     "autoload": {

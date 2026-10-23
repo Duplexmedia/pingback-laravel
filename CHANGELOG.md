@@ -1,5 +1,12 @@
 # Changelog
 
+# 5.0.0
+
+- Add Laravel 13 support with php 8.3
+- Drop Laravel 12 support
+- Update orchestra/testbench to ^11 and phpunit to ^12.5
+- Support PHP 8.3–8.5
+
 # 4.0.0
 
 - Add Laravel 12 support with php 8.3

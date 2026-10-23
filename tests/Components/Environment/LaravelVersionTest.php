@@ -38,16 +38,16 @@ class LaravelVersionTest extends TestCase
         $this->assertFalse($result);
     }
 
-    public function test_can_get_non_mocked_laravel_version_12()
+    public function test_can_get_non_mocked_laravel_version_13()
     {
         $explodedLaravelVersion = explode('.', App::version());
 
-        if ($explodedLaravelVersion[0] != 12) {
+        if ($explodedLaravelVersion[0] != 13) {
             $this->markTestSkipped();
         }
 
         $version = (new LaravelVersion())->get();
 
-        $this->assertStringStartsWith('12.', $version);
+        $this->assertStringStartsWith('13.', $version);
     }
 }

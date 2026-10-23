@@ -20,7 +20,7 @@ pipeline {
           sh 'sudo chown -R jenkins *'
         }
     }
-    stage('Testing Laravel 12') {
+    stage('Testing Laravel 13') {
         steps {
             sh "docker exec --tty ${customContainerNamePHP8} composer install"
             sh "docker exec --tty ${customContainerNamePHP8} composer test"
