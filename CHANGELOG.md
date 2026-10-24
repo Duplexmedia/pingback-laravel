@@ -1,5 +1,11 @@
 # Changelog
 
+# 2.4.1
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
+
 # 2.4.0
 
 - Add Laravel 10 support
