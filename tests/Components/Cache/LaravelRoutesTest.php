@@ -8,9 +8,17 @@ use Illuminate\Support\Facades\App;
 
 class LaravelRoutesTest extends TestCase
 {
+    protected function tearDown(): void
+    {
+        $this->removeRoutesCache();
+
+        parent::tearDown();
+    }
+
     public function test_can_get_disabled_laravel_routes_cache()
     {
-        App::partialMock()->shouldReceive('bootstrapPath')->andReturn('nonExistingFilePath.tmp');
+        $this->removeRoutesCache();
+        $this->forgetMemoizedRoutesCacheState();
         $cache = (new LaravelRoutes())->get();
 
         $this->assertFalse($cache);
@@ -18,11 +26,38 @@ class LaravelRoutesTest extends TestCase
 
     public function test_can_get_enabled_laravel_routes_cache()
     {
-        $file = tmpfile();
-        $temp_path = stream_get_meta_data($file);
-        App::partialMock()->shouldReceive('bootstrapPath')->andReturn($temp_path['uri']);
-        $cache = (new LaravelRoutes())->get();
+        $path = App::getCachedRoutesPath();
+
+        if (! is_dir(dirname($path))) {
+            mkdir(dirname($path), 0755, true);
+        }
+
+        try {
+            file_put_contents($path, '<?php');
+            $this->forgetMemoizedRoutesCacheState();
+            $cache = (new LaravelRoutes())->get();
+        } finally {
+            $this->removeRoutesCache();
+        }
 
         $this->assertTrue($cache);
+    }
+
+    /**
+     * Newer Laravel versions memoize the result of routesAreCached() in the
+     * container while the application boots, so reset it after changing the file.
+     */
+    private function forgetMemoizedRoutesCacheState(): void
+    {
+        $this->app->forgetInstance('routes.cached');
+    }
+
+    private function removeRoutesCache(): void
+    {
+        $path = App::getCachedRoutesPath();
+
+        if (file_exists($path)) {
+            unlink($path);
+        }
     }
 }

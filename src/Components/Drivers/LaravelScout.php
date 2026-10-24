@@ -6,6 +6,6 @@ class LaravelScout
 {
     public function get()
     {
-        return config('scout.default');
+        return config('scout.driver');
     }
 }
