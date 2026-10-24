@@ -1,5 +1,11 @@
 # Changelog
 
+# 3.1.2
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
+
 # 3.1.1
 
 - Fix Laravel 11 version constraint (v3.1.0 accidentally excluded Laravel 11)

@@ -6,6 +6,6 @@ class LaravelOctane
 {
     public function get()
     {
-        return config('octane.default');
+        return config('octane.server');
     }
 }
