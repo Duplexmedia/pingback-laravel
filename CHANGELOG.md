@@ -1,11 +1,23 @@
 # Changelog
 
+# 5.0.1
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
+
 # 5.0.0
 
 - Add Laravel 13 support with php 8.3
 - Drop Laravel 12 support
 - Update orchestra/testbench to ^11 and phpunit to ^12.5
 - Support PHP 8.3–8.5
+
+# 4.0.1
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
 
 # 4.0.0
 
@@ -15,6 +27,12 @@
 - Migrate phpunit configuration to PHPUnit 11, remove phpunit10.xml.dist
 - Fix environment dependent tests
 - Support PHP 8.3–8.5 (PHP requirement changed from ~8.3 to ^8.3)
+
+# 3.1.2
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
 
 # 3.1.1
 
@@ -30,6 +48,12 @@
 
 - Add Laravel 11 support with php 8.3
 - Drop all other Laravel and php versions
+
+# 2.4.1
+
+- Fix Scout driver detection (read `scout.driver` instead of non-existent `scout.default`)
+- Fix Octane server detection (read `octane.server` instead of non-existent `octane.default`)
+- Fix route cache detection (use `App::routesAreCached()`, the old path contained spaces and never matched)
 
 # 2.4.0
 

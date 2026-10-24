@@ -9,7 +9,16 @@ class LaravelOctaneTest extends TestCase
 {
     public function test_can_get_laravel_octane_driver()
     {
-        config()->set('octane.default', 'TestdriverOctane');
+        config()->set('octane.server', 'TestdriverOctane');
+        $driver = (new LaravelOctane())->get();
+
+        $this->assertSame('TestdriverOctane', $driver);
+    }
+
+    public function test_laravel_octane_driver_ignores_non_existing_default_key()
+    {
+        config()->set('octane.default', 'WrongdriverOctane');
+        config()->set('octane.server', 'TestdriverOctane');
         $driver = (new LaravelOctane())->get();
 
         $this->assertSame('TestdriverOctane', $driver);
